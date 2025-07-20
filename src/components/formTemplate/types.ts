@@ -13,5 +13,6 @@ export interface Props<T extends yup.Maybe<yup.AnyObject>> {
   fields: FieldConfig[];
   validationSchema: yup.ObjectSchema<T>;
   onSubmit: (values: T) => void;
+  onSuccess?: (resetForm: () => void) => void;
   submitText: string;
 }

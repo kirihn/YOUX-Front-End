@@ -47,3 +47,7 @@ export const createUserFields: FieldConfig[] = [
   },
   { name: 'photo', label: 'Фото', type: 'file' },
 ];
+
+export interface ResponseDto {
+  status: boolean;
+}

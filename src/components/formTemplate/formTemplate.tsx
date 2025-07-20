@@ -7,7 +7,11 @@ export function FormTemplate<T extends object>(props: Props<T>) {
       <Formik
         initialValues={props.initialValues}
         validationSchema={props.validationSchema}
-        onSubmit={props.onSubmit}
+        // onSubmit={props.onSubmit}
+        onSubmit={async (values, formikHelpers) => {
+          await props.onSubmit;
+          props.onSuccess?.(formikHelpers.resetForm); // вызываем сброс снаружи только по решению
+        }}
       >
         {({ setFieldValue }) => (
           <Form className="formTemplate">
