@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Layout } from "./components/layout/layout";
-
+import './app.scss'
 function App() {
 
   return (
