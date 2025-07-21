@@ -1,0 +1,55 @@
+.UserCardContainer{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid rgb(185, 185, 185);
+    background: #ffffff;
+    padding: 15px;
+    .PhotoContainer{
+        padding: 15px;
+        border: 2px solid #47defd;
+        border-radius: 50%;
+        box-shadow: 0px 0px 20px #40cae5,
+              inset 0px 0px 20px #40cae5;
+        width: 180px;
+        height: 180px;
+        margin: auto;
+        img{
+            object-fit: cover;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .userInfoContainer{
+        margin-top: 15px;
+        color: #232529;
+        overflow: hidden;
+        p{
+            font-size: 16px;
+
+            span{
+                font-weight: 600;
+            }
+        }
+    }
+
+    .buttonsContainer{
+        margin: auto;
+        button{
+            padding: 8px 16px;
+            margin: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+             color: #ffffff;
+        }
+        .updateButton{
+            background: #40cae5;
+        }
+        .deleteButton{
+            background: #eb1a55;
+        }
+    }
+}

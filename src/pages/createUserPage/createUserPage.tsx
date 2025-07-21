@@ -8,7 +8,7 @@ import {
 import './createUserPage.scss';
 import { useApi } from '../../hooks/useApi';
 import axios from 'axios';
-import { useEffect } from 'react';
+
 export function CreateUserPage() {
   const { resData, execute } = useApi<ResponseDto, FormData>(async (body) =>
     axios.post('/api/user/CreateNewUser', body),
@@ -19,15 +19,9 @@ export function CreateUserPage() {
     Object.entries(values).forEach(([key, value]) => {
       formData.append(key, value as string | Blob);
     });
-    alert(1)
     execute(formData);
   };
 
-  useEffect(() => {
-    if (resData?.status === true) {
-      // очистить все поля
-    }
-  }, [resData]);
   return (
     <div className="createUserPageContainer pageContainer">
       <FormTemplate
