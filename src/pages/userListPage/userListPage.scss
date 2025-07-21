@@ -10,5 +10,31 @@
         flex-wrap: wrap;
         gap: 16px;
     }
-    
+    .paginationContainer{
+        margin: auto;
+        display: flex;
+        
+        .pageIndexContainer{
+            color: #40cae5;
+            font-size: 22px;
+            font-weight: 600;
+            padding: 8px 16px;
+        }
+
+        button{
+            background: #40cae5;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 5px;
+            border:none;
+            margin: auto;
+            font-size: 16px;
+            &:hover{
+                background: #47defd;
+            }
+            &:active{
+                background: #12a7c4;
+            }            
+        }
+    }
 }
