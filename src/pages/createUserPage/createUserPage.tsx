@@ -11,7 +11,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 export function CreateUserPage() {
   const { resData, execute } = useApi<ResponseDto, FormData>(async (body) =>
-    axios.post('http://localhost:10000/api/user/CreateNewUser', body),
+    axios.post('/api/user/CreateNewUser', body),
   );
 
   const handleSubmit = (values: typeof initialValues) => {
@@ -19,7 +19,7 @@ export function CreateUserPage() {
     Object.entries(values).forEach(([key, value]) => {
       formData.append(key, value as string | Blob);
     });
-
+    alert(1)
     execute(formData);
   };
 

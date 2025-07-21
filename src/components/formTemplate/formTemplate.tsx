@@ -9,7 +9,7 @@ export function FormTemplate<T extends object>(props: Props<T>) {
         validationSchema={props.validationSchema}
         // onSubmit={props.onSubmit}
         onSubmit={async (values, formikHelpers) => {
-          await props.onSubmit;
+          await props.onSubmit(values);
           props.onSuccess?.(formikHelpers.resetForm);
         }}
       >

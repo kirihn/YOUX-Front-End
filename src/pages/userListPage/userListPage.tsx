@@ -4,7 +4,6 @@ import type { RootState } from '../../redux/store/store';
 import {
   nextPage,
   backPage,
-  choisePage,
 } from '../../redux/slices/pageIndexSlice';
 import { useEffect } from 'react';
 import { useApi } from '../../hooks/useApi';
@@ -16,7 +15,7 @@ export function UserListPage() {
   const dispatch = useDispatch();
 
   const { resData, execute } = useApi<GetUsersResponse>(async () =>
-    axios.get('http://localhost:10000/api/user/GetUsers', {
+    axios.get('/api/user/GetUsers', {
       params: {
         pageIndex: pageIndex.pageIndex,
         countUsers: 4,
@@ -38,13 +37,15 @@ export function UserListPage() {
   return (
     <div className="userListPageContainer pageContainer">
       <div className="userListContainer">
-        <UserCard />
+        {resData?.users.map((user) => (
+          <UserCard userData={user}/>
+        ))}
       </div>
       <div className="paginationContainer">
         <button
           className="backButton"
           onClick={handleBackPage}
-          disabled={pageIndex.pageIndex === 1}
+          disabled={pageIndex.pageIndex <= 1}
         >
           {'<'}
         </button>
@@ -52,7 +53,7 @@ export function UserListPage() {
         <button
           className="nextButton"
           onClick={handleNextPage}
-          disabled={pageIndex.pageIndex >= resData?.totalPages}
+          disabled={!!resData && pageIndex.pageIndex >= resData.totalPages}
         >
           {'>'}
         </button>
