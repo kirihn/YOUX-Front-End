@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import { useApi } from '../../hooks/useApi';
 import axios from 'axios';
 import type { GetUsersResponse } from './types';
-
+import './userListPage.scss'
 export function UserListPage() {
   const pageIndex = useSelector((state: RootState) => state.pageIndex);
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export function UserListPage() {
     axios.get('/api/user/GetUsers', {
       params: {
         pageIndex: pageIndex.pageIndex,
-        countUsers: 4,
+        countUsers: 6,
       },
     }),
   );

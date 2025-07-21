@@ -1,0 +1,14 @@
+.userListPageContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    .userListContainer{
+        display: flex;
+        max-width: 940px;
+        margin: auto;
+        // justify-content: center ;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    
+}
