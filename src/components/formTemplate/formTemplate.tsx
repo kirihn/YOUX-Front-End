@@ -10,7 +10,7 @@ export function FormTemplate<T extends object>(props: Props<T>) {
         // onSubmit={props.onSubmit}
         onSubmit={async (values, formikHelpers) => {
           await props.onSubmit;
-          props.onSuccess?.(formikHelpers.resetForm); // вызываем сброс снаружи только по решению
+          props.onSuccess?.(formikHelpers.resetForm);
         }}
       >
         {({ setFieldValue }) => (

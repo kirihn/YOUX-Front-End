@@ -18,7 +18,6 @@ export function useApi<T, D = undefined>(
 
     try {
       const response = await request(body);
-      console.log(response.data);
       setData(response.data);
     } catch (err) {
       const error = err as AxiosError<ServerError>;

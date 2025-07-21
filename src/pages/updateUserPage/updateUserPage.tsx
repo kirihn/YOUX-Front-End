@@ -10,7 +10,7 @@ export function CreateUserPage() {
     });
   };
   return (
-    <div className="createUserPageContainer">
+    <div className="createUserPageContainer pageContainer">
       <FormTemplate
         initialValues={initialValues}
         fields={createUserFields}
