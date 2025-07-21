@@ -1,18 +1,21 @@
 .userListPageContainer{
     display: flex;
     flex-direction: column;
-    padding: 30px;
-    .userListContainer{
-        display: flex;
-        max-width: 940px;
-        margin: auto;
-        // justify-content: center ;
-        flex-wrap: wrap;
-        gap: 16px;
-    }
+    padding: 20px;
+
+        .userListContainer{
+            margin: auto;
+            max-width: 932px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
     .paginationContainer{
-        margin: auto;
+        margin: auto auto 0 auto ;
+        padding-top: 10px;
         display: flex;
+        
         
         .pageIndexContainer{
             color: #40cae5;
@@ -28,7 +31,9 @@
             border-radius: 5px;
             border:none;
             margin: auto;
-            font-size: 16px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
             &:hover{
                 background: #47defd;
             }

@@ -1,8 +1,33 @@
-import type { Props } from './types';
+import type { DeleteUserDto, Props, ResponseDto } from './types';
+import type { RootState } from '../../redux/store/store';
+import { setNewUserId } from '../../redux/slices/CurrentUserSlice';
 import './userCard.scss';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { useApi } from '../../hooks/useApi';
+import { useEffect } from 'react';
 
 export function UserCard(props: Props) {
+  const dispatch = useDispatch();
+  const { resData, execute } = useApi<ResponseDto, DeleteUserDto>(
+    async (body) => axios.delete('/api/user/DeleteUser', { data: body }),
+  );
+
   const { userData } = props;
+
+  const handleUpdateUser = () => {
+    dispatch(setNewUserId(userData.id));
+  };
+
+  const handleDeleteUser = () => {
+    execute({ id: userData.id });
+  };
+
+  useEffect(()=>{
+    if(resData && resData.status){
+      alert('Пользователь успешно удален!')
+    }
+  }, [resData])
   return (
     <div className="UserCardContainer">
       <div className="PhotoContainer">
@@ -35,8 +60,12 @@ export function UserCard(props: Props) {
         </p>
       </div>
       <div className="buttonsContainer">
-        <button className="updateButton">Update</button>
-        <button className="deleteButton">Delete</button>
+        <button className="updateButton" onClick={handleUpdateUser}>
+          Update
+        </button>
+        <button className="deleteButton" onClick={handleDeleteUser}>
+          Delete
+        </button>
       </div>
     </div>
   );

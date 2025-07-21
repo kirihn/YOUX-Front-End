@@ -14,3 +14,11 @@ export interface User {
 export interface Props {
   userData: User;
 }
+
+export interface DeleteUserDto {
+  id: string;
+}
+
+export interface ResponseDto {
+  status: boolean;
+}

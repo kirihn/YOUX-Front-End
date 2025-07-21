@@ -1,15 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { UserCard } from '../../components/userCard/userCard';
 import type { RootState } from '../../redux/store/store';
-import {
-  nextPage,
-  backPage,
-} from '../../redux/slices/pageIndexSlice';
+import { nextPage, backPage } from '../../redux/slices/pageIndexSlice';
 import { useEffect } from 'react';
 import { useApi } from '../../hooks/useApi';
 import axios from 'axios';
 import type { GetUsersResponse } from './types';
-import './userListPage.scss'
+import './userListPage.scss';
 export function UserListPage() {
   const pageIndex = useSelector((state: RootState) => state.pageIndex);
   const dispatch = useDispatch();
@@ -38,7 +35,7 @@ export function UserListPage() {
     <div className="userListPageContainer pageContainer">
       <div className="userListContainer">
         {resData?.users.map((user) => (
-          <UserCard userData={user}/>
+          <UserCard userData={user} />
         ))}
       </div>
       <div className="paginationContainer">

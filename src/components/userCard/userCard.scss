@@ -43,12 +43,25 @@
             font-size: 16px;
             border-radius: 5px;
             border: none;
-             color: #ffffff;
+            color: #ffffff;
+            cursor: pointer;
         }
         .updateButton{
+            &:hover{
+                background: #47defd;
+            }
+            &:active{
+                background: #12a7c4;
+            } 
             background: #40cae5;
         }
         .deleteButton{
+            &:hover{
+                background: #fa326b;
+            }
+            &:active{
+                background: #c41748;
+            } 
             background: #eb1a55;
         }
     }
