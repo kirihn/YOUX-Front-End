@@ -34,6 +34,15 @@
             font-size: 17px;
             font-weight: 600;
             cursor: pointer;
+            &:disabled{
+                cursor: not-allowed;
+                background: #a9ecfa;
+
+                &:hover,
+                &:active {
+                  background-color: #a9ecfa;
+                }
+            }
             &:hover{
                 background: #47defd;
             }

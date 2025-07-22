@@ -1,5 +1,4 @@
 import type { DeleteUserDto, Props, ResponseDto } from './types';
-import type { RootState } from '../../redux/store/store';
 import { setNewUserId } from '../../redux/slices/CurrentUserSlice';
 import './userCard.scss';
 import { useDispatch } from 'react-redux';
