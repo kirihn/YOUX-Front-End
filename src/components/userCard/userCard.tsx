@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useApi } from '../../hooks/useApi';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { choisePage } from '../../redux/slices/pageIndexSlice';
 
 export function UserCard(props: Props) {
   const dispatch = useDispatch();
@@ -18,18 +19,21 @@ export function UserCard(props: Props) {
 
   const handleUpdateUser = () => {
     dispatch(setNewUserId(userData.id));
-    navigate('/updateUser')
+    navigate('/updateUser');
   };
 
   const handleDeleteUser = () => {
     execute({ id: userData.id });
   };
 
-  useEffect(()=>{
-    if(resData && resData.status){
-      alert('Пользователь успешно удален!')
+  useEffect(() => {
+    if (resData && resData.status) {
+      alert('Пользователь успешно удален!');
+      dispatch(choisePage(0));
+      dispatch(choisePage(1));
+
     }
-  }, [resData])
+  }, [resData]);
   return (
     <div className="UserCardContainer">
       <div className="PhotoContainer">

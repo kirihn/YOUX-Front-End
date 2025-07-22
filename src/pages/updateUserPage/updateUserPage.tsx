@@ -45,7 +45,6 @@ export function UpdateUserPage() {
       formData.append(key, value as string | Blob);
     });
     executeUpdateUser(formData);
-    alert('send');
   };
 
   useEffect(() => {
