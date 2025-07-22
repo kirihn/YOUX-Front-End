@@ -1,18 +1,17 @@
 import { FormTemplate } from '../../components/formTemplate/formTemplate';
 import { createUserValidationSchema } from '../../utils/yup/createUserSchema';
-import {
-  initialValues,
-  createUserFields,
-  type ResponseDto,
-} from './types';
+import { initialValues, createUserFields, type ResponseDto } from './types';
 import './createUserPage.scss';
 import { useApi } from '../../hooks/useApi';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export function CreateUserPage() {
   const { resData, execute } = useApi<ResponseDto, FormData>(async (body) =>
     axios.post('/api/user/CreateNewUser', body),
   );
+
+  const [resetFormFn, setResetFormFn] = useState<(() => void) | null>(null);
 
   const handleSubmit = (values: typeof initialValues) => {
     const formData = new FormData();
@@ -22,6 +21,13 @@ export function CreateUserPage() {
     execute(formData);
   };
 
+  useEffect(() => {
+    if (resData?.status === true) {
+      alert('Пользователь успешно создан!');
+      resetFormFn?.();
+    }
+  }, [resData]);
+
   return (
     <div className="createUserPageContainer pageContainer">
       <FormTemplate
@@ -30,12 +36,7 @@ export function CreateUserPage() {
         validationSchema={createUserValidationSchema}
         onSubmit={handleSubmit}
         submitText="Создать пользователя"
-        onSuccess={(resetForm) => {
-          if (resData?.status === true) {
-            alert('Пользователь успешно создан!');
-            resetForm();
-          }
-        }}
+        onSuccess={(resetForm) => setResetFormFn(() => resetForm)}
       />
     </div>
   );

@@ -16,7 +16,21 @@ export const initialValues = {
   photo: null as File | null,
 };
 
-export const createUserFields: FieldConfig[] = [
+export interface ResponseDto {
+  firstName?: string | undefined;
+  lastName?: string | undefined;
+  height?: number | undefined;
+  weight?: number | undefined;
+  gender?: string | undefined;
+  address?: string | undefined;
+  photo?: File | null | undefined;
+}
+
+export interface ResponseUpdateUserDto {
+  status: boolean;
+}
+
+export const updateUserFields: FieldConfig[] = [
   { name: 'firstName', label: 'Имя', placeHolder: 'Введите имя' },
   { name: 'lastName', label: 'Фамилия', placeHolder: 'Введите фамилию' },
   {

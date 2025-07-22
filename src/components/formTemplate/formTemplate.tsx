@@ -7,7 +7,6 @@ export function FormTemplate<T extends object>(props: Props<T>) {
       <Formik
         initialValues={props.initialValues}
         validationSchema={props.validationSchema}
-        // onSubmit={props.onSubmit}
         onSubmit={async (values, formikHelpers) => {
           await props.onSubmit(values);
           props.onSuccess?.(formikHelpers.resetForm);

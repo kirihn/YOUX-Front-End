@@ -5,9 +5,11 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { useApi } from '../../hooks/useApi';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function UserCard(props: Props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { resData, execute } = useApi<ResponseDto, DeleteUserDto>(
     async (body) => axios.delete('/api/user/DeleteUser', { data: body }),
   );
@@ -16,6 +18,7 @@ export function UserCard(props: Props) {
 
   const handleUpdateUser = () => {
     dispatch(setNewUserId(userData.id));
+    navigate('/updateUser')
   };
 
   const handleDeleteUser = () => {

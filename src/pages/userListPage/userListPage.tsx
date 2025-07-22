@@ -35,7 +35,7 @@ export function UserListPage() {
     <div className="userListPageContainer pageContainer">
       <div className="userListContainer">
         {resData?.users.map((user) => (
-          <UserCard userData={user} />
+          <UserCard userData={user} key={user.id}/>
         ))}
       </div>
       <div className="paginationContainer">
